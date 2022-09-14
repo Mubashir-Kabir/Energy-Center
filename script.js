@@ -30,6 +30,10 @@ const typeController = (e) => {
     userText = userText.slice(0, userText.length - 1);
     return display.removeChild(display.lastChild);
   }
+  //hande space press to prevent default scroll
+  if (e.keyCode == 32 && e.target == document.body) {
+    e.preventDefault();
+  }
 
   // these are the valid character we are allowing to type
   const validLetters =
@@ -112,6 +116,7 @@ const start = () => {
   if (startTime) return;
 
   let count = 3;
+  countdownOverlay.innerText = "";
   countdownOverlay.style.display = "flex";
 
   const startCountdown = setInterval(() => {
