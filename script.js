@@ -12,13 +12,15 @@ let startTime;
 let questionText = "";
 
 // Load and display question
-fetch("./texts.json")
-  .then((res) => res.json())
-  .then((data) => {
-    questionText = data[Math.floor(Math.random() * data.length)];
-    question.innerHTML = questionText;
-  });
-
+const displayQuestion = () => {
+  fetch("./texts.json")
+    .then((res) => res.json())
+    .then((data) => {
+      questionText = data[Math.floor(Math.random() * data.length)];
+      question.innerHTML = questionText;
+    });
+};
+displayQuestion();
 // checks the user typed character and displays accordingly
 const typeController = (e) => {
   const newLetter = e.key;
@@ -93,6 +95,7 @@ const gameOver = () => {
   addHistory(questionText, timeTaken, errorCount);
 
   // restart everything
+  displayQuestion();
   startTime = null;
   errorCount = 0;
   userText = "";
