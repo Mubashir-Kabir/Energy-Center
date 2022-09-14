@@ -12,6 +12,7 @@ body {
 }
 
 .box-container {
+  overflow: hidden;
   width: 70%;
   margin: 0 auto;
 }
