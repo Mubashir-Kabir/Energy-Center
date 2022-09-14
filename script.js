@@ -5,6 +5,13 @@ const countdownOverlay = document.getElementById("countdown");
 const resultModal = document.getElementById("result");
 const modalBackground = document.getElementById("modal-background");
 
+//prevent spacebar to start again when result is shownig && start button is focused
+document.querySelectorAll("button").forEach(function (item) {
+  item.addEventListener("focus", function () {
+    this.blur();
+  });
+});
+
 // variables
 let userText = "";
 let errorCount = 0;
@@ -30,7 +37,7 @@ const typeController = (e) => {
     userText = userText.slice(0, userText.length - 1);
     return display.removeChild(display.lastChild);
   }
-  //hande space press to prevent default scroll
+  //hande space press to prevent default scroll when typing
   if (e.keyCode == 32 && e.target == document.body) {
     e.preventDefault();
   }
@@ -138,6 +145,7 @@ const start = () => {
 
 // START Countdown
 startBtn.addEventListener("click", start);
+// startBtn.addEventListener("focus", () => this.blur());
 
 // If history exists, show it
 displayHistory();
