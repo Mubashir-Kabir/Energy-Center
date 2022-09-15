@@ -5,18 +5,18 @@ const countdownOverlay = document.getElementById("countdown");
 const resultModal = document.getElementById("result");
 const modalBackground = document.getElementById("modal-background");
 
+// variables
+let userText = "";
+let errorCount = 0;
+let startTime;
+let questionText = "";
+
 //prevent spacebar to start again when result is shownig && start button is focused
 document.querySelectorAll("button").forEach(function (item) {
   item.addEventListener("focus", function () {
     this.blur();
   });
 });
-
-// variables
-let userText = "";
-let errorCount = 0;
-let startTime;
-let questionText = "";
 
 // Load and display question
 const displayQuestion = () => {
